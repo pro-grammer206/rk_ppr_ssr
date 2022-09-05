@@ -71,11 +71,11 @@ function play(playerSelection) {
   const computerSelection = getComputerChoice();
   const imgPlayer = document.createElement("img");
   const imgComp = document.createElement("img");
-  imgPlayer.setAttribute("src", `/assets/${playerSelection}.svg`);
+  imgPlayer.setAttribute("src", `./assets/${playerSelection}.svg`);
   imgPlayer.setAttribute("width", "100");
   imgPlayer.setAttribute("height", "100");
   user.appendChild(imgPlayer);
-  imgComp.setAttribute("src", `/assets/${computerSelection}.svg`);
+  imgComp.setAttribute("src", `./assets/${computerSelection}.svg`);
   imgComp.setAttribute("width", "100");
   imgComp.setAttribute("height", "100");
   computer.appendChild(imgComp);
