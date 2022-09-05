@@ -7,7 +7,7 @@ const scissor = document.getElementById("scissor");
 const user = document.getElementById("user");
 const computer = document.getElementById("computer");
 const result = document.getElementById("result");
-
+let url = "https://pro-grammer206.github.io/rk_ppr_ssr/assets/";
 //clear nodes
 function clearNodes() {
   if (user.hasChildNodes()) {
@@ -71,11 +71,11 @@ function play(playerSelection) {
   const computerSelection = getComputerChoice();
   const imgPlayer = document.createElement("img");
   const imgComp = document.createElement("img");
-  imgPlayer.setAttribute("src", `./assets/${playerSelection}.svg`);
+  imgPlayer.setAttribute("src", `${url}${playerSelection}.svg`);
   imgPlayer.setAttribute("width", "100");
   imgPlayer.setAttribute("height", "100");
   user.appendChild(imgPlayer);
-  imgComp.setAttribute("src", `./assets/${computerSelection}.svg`);
+  imgComp.setAttribute("src", `${url}${computerSelection}.svg`);
   imgComp.setAttribute("width", "100");
   imgComp.setAttribute("height", "100");
   computer.appendChild(imgComp);
