@@ -1,6 +1,28 @@
+//controls
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissor = document.getElementById("scissor");
+
+//display
+const user = document.getElementById("user");
+const computer = document.getElementById("computer");
+const result = document.getElementById("result");
+
+//clear nodes
+function clearNodes() {
+  if (user.hasChildNodes()) {
+    for (let node of user.childNodes) {
+      node.remove();
+    }
+  }
+  if (computer.hasChildNodes()) {
+    for (let node of computer.childNodes) {
+      node.remove();
+    }
+  }
+}
 const choices = ["rock", "paper", "scissor"];
 let score = 0;
-
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * 3)];
 }
@@ -45,17 +67,29 @@ function calculateScore(playerSelection, computerSelection) {
   }
   return score;
 }
-function playRound() {
-  const playerSelection = prompt("Enter your choice").toLowerCase();
+function play(playerSelection) {
   const computerSelection = getComputerChoice();
-  console.log(` player:${playerSelection}  computer:${computerSelection}`);
+  const imgPlayer = document.createElement("img");
+  const imgComp = document.createElement("img");
+  imgPlayer.setAttribute("src", `/assets/${playerSelection}.svg`);
+  imgPlayer.setAttribute("width", "100");
+  imgPlayer.setAttribute("height", "100");
+  user.appendChild(imgPlayer);
+  imgComp.setAttribute("src", `/assets/${computerSelection}.svg`);
+  imgComp.setAttribute("width", "100");
+  imgComp.setAttribute("height", "100");
+  computer.appendChild(imgComp);
+
+  //   console.log(` player:${playerSelection}  computer:${computerSelection}`);
   score = calculateScore(playerSelection, computerSelection);
-  console.log(score);
+  result.textContent = score;
 }
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    playRound();
-  }
-  console.log(score >= 3 ? `you win ${score}` : `you lose ${score}`);
-}
-playGame();
+
+//event listener
+const choiceButtons = document.querySelectorAll(".interface button");
+choiceButtons.forEach(function (button) {
+  button.addEventListener("click", (e) => {
+    play(e.target.id);
+    clearNodes();
+  });
+});
